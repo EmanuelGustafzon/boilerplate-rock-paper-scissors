@@ -37,7 +37,7 @@ class DataCleaner:
             i+=1
         return (X, y)
     @staticmethod
-    def prepareDataTwo(opponent_history, my_history):
+    def prepareData(opponent_history, my_history):
         X = []
         y = []
         i = 0
@@ -70,7 +70,7 @@ def player(prev_play, opponent_history=[], my_history=[]):
     int_my_history = dataCleaner.numberize(my_history)
 
     if len(opponent_history) % 10 == 0 and len(opponent_history) > 19:
-        X, y = dataCleaner.prepareDataTwo(int_opponent_history, int_my_history)
+        X, y = dataCleaner.prepareData(int_opponent_history, int_my_history)
         predictor.train(X, y)
 
     last_moves = int_opponent_history[-2:] + int_my_history[-2:]
